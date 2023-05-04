@@ -1,0 +1,9 @@
+{
+  "name": "colosseum",
+  "version": "0.0.0",
+  "repository": "git@github.com:inhibitor1217/colosseum.git",
+  "author": "inhibitor1217 <inhibitor@kaist.ac.kr>",
+  "license": "MIT",
+  "private": true,
+  "packageManager": "yarn@3.5.1"
+}
