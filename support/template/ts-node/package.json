@@ -1,0 +1,14 @@
+{
+  "name": "<package-name>",
+  "version": "0.0.1",
+  "private": true,
+  "description": "<package-description>",
+  "main": "build/main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.0.4"
+  }
+}
