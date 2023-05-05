@@ -9,6 +9,10 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+
+    "github-webhook#dev": {
+      "dependsOn": ["github-webhook#build"]
     }
   }
 }
