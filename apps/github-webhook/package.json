@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "serverless offline start --stage dev",
-    "build": "esbuild src/main.ts --bundle --platform=node --target=node18 --outfile=build/main.js",
+    "build": "esbuild src/main.ts --bundle --minify --platform=node --target=node18 --outfile=build/main.js",
     "lint": "eslint"
   },
   "devDependencies": {
@@ -19,5 +19,8 @@
     "serverless-offline": "^12.0.4",
     "tsconfig": "workspace:*",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.8.0"
   }
 }

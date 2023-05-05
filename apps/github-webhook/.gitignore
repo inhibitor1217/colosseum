@@ -1,2 +1,5 @@
 # Deployment
 .serverless
+
+# Environment variables
+config

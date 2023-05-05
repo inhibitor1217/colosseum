@@ -23,10 +23,18 @@ functions:
           path: /github/webhook
           method: post
           cors: true
+    environment:
+      STAGE: ${self:custom.stage}
 
 resources:
   Resources:
     LambdaRole: ${file(./res/lambda-role.yml)}
+
+package:
+  patterns:
+    - "!**"
+    - build/**
+    - config/${self:custom.stage}/**
 
 plugins:
   - serverless-offline
