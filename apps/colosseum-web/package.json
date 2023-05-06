@@ -1,0 +1,22 @@
+{
+  "name": "colosseum-web",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Web client application for colosseum",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-solid": "^2.5.0"
+  },
+  "dependencies": {
+    "solid-js": "^1.6.10"
+  }
+}
