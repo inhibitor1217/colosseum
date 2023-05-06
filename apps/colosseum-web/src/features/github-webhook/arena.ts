@@ -1,3 +1,3 @@
 export type Arena =
-  | { type: "repository"; id: number }
-  | { type: "organization"; id: number };
+  | { type: "repository"; fullName: string }
+  | { type: "organization"; login: string };

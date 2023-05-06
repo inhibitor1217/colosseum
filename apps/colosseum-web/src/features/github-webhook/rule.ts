@@ -22,7 +22,7 @@ export type Rule = {
 const issueOpen: Rule = {
   event: "issues",
   action: "opened",
-  filter: [["issue.state_reason", "!=", "reopened"]],
+  filter: [["issue.state_reason", "==", null]],
   score: 50,
 };
 
