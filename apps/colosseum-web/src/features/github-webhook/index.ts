@@ -1,4 +1,4 @@
-export { aggregateScores, stubScores } from "./aggregate";
+export { aggregateScores } from "./aggregate";
 
 export { type Arena } from "./arena";
 

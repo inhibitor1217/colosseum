@@ -13,5 +13,3 @@ export const aggregateScores =
         },
         [0, 0]
       );
-
-export const stubScores = () => () => [420, Date.now()];
