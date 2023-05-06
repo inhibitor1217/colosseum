@@ -1,4 +1,9 @@
-import { rules, scoreOfRuleInThisMonth } from "~/features/github-webhook";
+import {
+  aggregateScores,
+  rules,
+  scoreOfRuleInThisMonth,
+  stubScores,
+} from "~/features/github-webhook";
 import { firestore } from "~/services/firebase";
 
 const ARENA = {
@@ -12,65 +17,27 @@ const USER = {
 };
 
 const App = () => {
-  const issueOpenScore = scoreOfRuleInThisMonth(
-    ARENA,
-    USER,
-    rules.issueOpen
-  )(firestore);
-  const issueCompletedScore = scoreOfRuleInThisMonth(
-    ARENA,
-    USER,
-    rules.issueCompleted
-  )(firestore);
-  const issueCommentScore = scoreOfRuleInThisMonth(
-    ARENA,
-    USER,
-    rules.issueComment
-  )(firestore);
-  const pullRequestOpenScore = scoreOfRuleInThisMonth(
-    ARENA,
-    USER,
-    rules.pullRequestOpen
-  )(firestore);
-  const pullRequestsCloseScore = scoreOfRuleInThisMonth(
-    ARENA,
-    USER,
-    rules.pullRequestClose
-  )(firestore);
-  const pullRequestMergeScore = scoreOfRuleInThisMonth(
-    ARENA,
-    USER,
-    rules.pullRequestMerge
-  )(firestore);
-  const pullRequestApproveScore = scoreOfRuleInThisMonth(
-    ARENA,
-    USER,
-    rules.pullRequestApprove
-  )(firestore);
-  const pullRequestReviewScore = scoreOfRuleInThisMonth(
-    ARENA,
-    USER,
-    rules.pullRequestReview
-  )(firestore);
+  const aggregated = stubScores();
+  // [
+  //   rules.issueOpen,
+  //   rules.issueCompleted,
+  //   rules.issueComment,
+  //   rules.pullRequestOpen,
+  //   rules.pullRequestClose,
+  //   rules.pullRequestMerge,
+  //   rules.pullRequestApprove,
+  //   rules.pullRequestReview,
+  // ]
+  //   .map(rule => scoreOfRuleInThisMonth(ARENA, USER, rule)(firestore))
 
   return (
     <h1 class="text-3xl">
-      issue open score = {issueOpenScore()}
-      <br />
-      issue completed score = {issueCompletedScore()}
-      <br />
-      issue comment score = {issueCommentScore()}
-      <br />
-      pull request open score = {pullRequestOpenScore()}
-      <br />
-      pull request close score = {pullRequestsCloseScore()}
-      <br />
-      pull request merge score = {pullRequestMergeScore()}
-      <br />
-      pull request approve score = {pullRequestApproveScore()}
-      <br />
-      pull request review score = {pullRequestReviewScore()}
-      <br />
+      {(() => {
+        const result = aggregated();
+        if (!result) return "Loading...";
+        const [score, timestamp] = result;
+        return `${score} (${new Date(timestamp).toLocaleString()})`;
+      })()}
     </h1>
   );
 };

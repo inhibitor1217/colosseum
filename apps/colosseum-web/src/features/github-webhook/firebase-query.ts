@@ -101,7 +101,7 @@ const latestWebhooksOfRule = (query: Query) => {
 };
 
 const score = (qCount: Query, qSubscribe: Query, rule: Rule) => {
-  const [count, { mutate }] = createResource(() =>
+  const [count, { mutate }] = createResource<[number, number]>(() =>
     getCountFromServer(qCount).then((snapshot) => [
       snapshot.data().count * rule.score,
       Date.now(),
@@ -124,7 +124,7 @@ const score = (qCount: Query, qSubscribe: Query, rule: Rule) => {
     });
   });
 
-  return () => count()?.[0];
+  return count;
 };
 
 export const scoreOfRule =
