@@ -1,1 +1,1 @@
-export type User = { type: "user"; login: string };
+export type User = { type: "user"; id: number; };

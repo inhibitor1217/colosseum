@@ -1,3 +1,4 @@
+import { signOut } from "~/features/auth";
 import {
   aggregateScores,
   rules,
@@ -12,8 +13,14 @@ const ARENA = {
 
 const USER = {
   type: "user" as const,
-  login: "inhibitor1217",
+  id: 25701854,
 };
+
+const Header = () => (
+  <button class="btn btn-primary" onClick={signOut}>
+    Sign out
+  </button>
+)
 
 const Loading = () => (
   <span class="text-6xl font-bold text-gray-700">Loading...</span>
@@ -62,6 +69,7 @@ const Score = () => {
 
   return (
     <>
+      <Header />
       {loading() ? (
         <Loading />
       ) : (

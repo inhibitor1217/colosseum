@@ -1,1 +1,1 @@
-export { signInWithGithub } from "./control";
+export { authUser, signInWithGithub, signOut } from "./control";

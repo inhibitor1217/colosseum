@@ -34,7 +34,7 @@ const whereMatchUser = (user: User) => {
     case "user":
       return [
         where("sender.type", "==", "User"),
-        where("sender.login", "==", user.login),
+        where("sender.id", "==", user.id),
       ];
   }
 };
