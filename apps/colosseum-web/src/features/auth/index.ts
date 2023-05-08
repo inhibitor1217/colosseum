@@ -1,0 +1,1 @@
+export { signInWithGithub } from "./control";
