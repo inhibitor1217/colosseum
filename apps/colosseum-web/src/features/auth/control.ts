@@ -3,6 +3,8 @@ import { createEffect, createSignal, onCleanup } from "solid-js";
 
 import { auth, authProviders } from "~/services/firebase";
 
+const delay = (ms: number, fn: () => void) => setTimeout(fn, ms)
+
 export const authUser = () => {
   // TODO handle while loading
   const [user, setUser] = createSignal<{
@@ -11,10 +13,16 @@ export const authUser = () => {
   }>({ loading: true, value: null });
 
   function sync() {
-    const unsubscribe = onAuthStateChanged(auth, _user => setUser({
-      loading: false,
-      value: _user,
-    }));
+    const unsubscribe = onAuthStateChanged(auth, _user => {
+      const prev = user();
+      const set = () => setUser({ loading: false, value: _user });
+      if (prev.loading) {
+        // Intentional delay for smooth landing
+        delay(1000, set)
+      } else {
+        set();
+      }
+    });
     onCleanup(unsubscribe);
   }
 

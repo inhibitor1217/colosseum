@@ -1,3 +1,4 @@
+import Spinner from "~/components/Spinner";
 import { signOut } from "~/features/auth";
 import {
   aggregateScores,
@@ -21,10 +22,6 @@ const Header = () => (
     Sign out
   </button>
 )
-
-const Loading = () => (
-  <span class="text-6xl font-bold text-gray-700">Loading...</span>
-);
 
 const Scoreboard = (props: { score: number; updatedAt: Date }) => (
   <div class="flex flex-col gap-4 items-start">
@@ -71,7 +68,7 @@ const Score = () => {
     <>
       <Header />
       {loading() ? (
-        <Loading />
+        <Spinner />
       ) : (
         <Scoreboard score={score()} updatedAt={updatedAt()} />
       )}
