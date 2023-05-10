@@ -1,5 +1,6 @@
 import { Show } from "solid-js";
 
+import Spinner from "~/components/Spinner";
 import { authUser } from "~/features/auth";
 import { PageLayout } from "~/layout";
 import Score from "~/pages/Score";
@@ -23,6 +24,9 @@ const App = () => {
 
   return (
     <PageLayout>
+      <Show when={loading()}>
+        <Spinner />
+      </Show>
       <Show when={signed()}>
         <Score />
       </Show>
