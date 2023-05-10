@@ -8,8 +8,18 @@ import SignIn from "~/pages/SignIn";
 const App = () => {
   const user = authUser();
 
-  const signed = () => !!user();
-  const unsigned = () => !user();
+  const loading = () => {
+    const u = user();
+    return u.loading;
+  };
+  const signed = () => {
+    const u = user();
+    return !u.loading && u.value;
+  };
+  const unsigned = () => {
+    const u = user();
+    return !u.loading && !u.value;
+  };
 
   return (
     <PageLayout>
